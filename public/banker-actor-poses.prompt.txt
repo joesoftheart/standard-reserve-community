@@ -1,0 +1,4 @@
+Built-in image_gen background-extraction edit, 2026-09-09.
+Reference: approved three-pose purple hoodie character concept sheet.
+Prompt: Preserve exact character identity, outfits, poses and props. Remove background to transparent alpha. Three equal-width columns: curious arrival, offering ETH, happy Charter receipt. Same scale and baseline, no overlap, complete full bodies, no added text.
+Output: banker-actor-poses.png, RGBA 1536x1024; used as CSS sprite by banker-infographic.tsx.

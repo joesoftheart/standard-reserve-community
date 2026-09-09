@@ -1,0 +1,40 @@
+begin;
+select set_config('request.jwt.claim.sub','b0f68498-fc5a-4d03-9db0-93fbbd3ae5f1',true);
+set local role authenticated;
+do $$ declare rid uuid;begin
+ if not public.is_community_admin() then raise exception 'ADMIN_NOT_GRANTED';end if;
+ insert into public.community_resources(url,kind,title_th,creator,status) values('https://example.test/'||gen_random_uuid(),'tool','temporary draft','test','draft') returning id into rid;
+ perform set_config('test.community_draft',rid::text,true);
+ insert into public.community_resources(url,kind,title_en,creator,status,featured) values('https://example.test/'||gen_random_uuid(),'article','temporary published','test','published',true) returning id into rid;
+ perform set_config('test.community_published',rid::text,true);
+ update public.community_resources set description_en='edited by admin' where id=rid;
+ if not exists(select 1 from public.community_resources where id=rid and description_en='edited by admin') then raise exception 'ADMIN_EDIT_FAILED';end if;
+end $$;
+reset role;
+select set_config('request.jwt.claim.sub','',true);
+set local role anon;
+do $$ begin
+ if public.is_community_admin() then raise exception 'ANON_ADMIN';end if;
+ if exists(select 1 from public.community_resources where id=current_setting('test.community_draft')::uuid) then raise exception 'DRAFT_LEAK';end if;
+ if not exists(select 1 from public.community_resources where id=current_setting('test.community_published')::uuid) then raise exception 'PUBLIC_READ_FAILED';end if;
+end $$;
+reset role;
+select set_config('request.jwt.claim.sub',gen_random_uuid()::text,true);
+set local role authenticated;
+do $$ declare n integer;begin
+ begin insert into public.community_resources(url,kind,title_th,creator) values('https://example.test/'||gen_random_uuid(),'tool','unauthorized','test');raise exception 'NON_ADMIN_INSERT_ALLOWED';exception when insufficient_privilege then null;end;
+ update public.community_resources set title_en='unauthorized edit' where id=current_setting('test.community_published')::uuid;get diagnostics n=row_count;if n<>0 then raise exception 'NON_ADMIN_UPDATE_ALLOWED';end if;
+ begin insert into public.community_admins(user_id) values(auth.uid());raise exception 'SELF_PROMOTION_ALLOWED';exception when insufficient_privilege then null;end;
+ begin insert into storage.objects(bucket_id,name) values('community-covers',auth.uid()::text||'/'||gen_random_uuid()||'.png');raise exception 'NON_ADMIN_UPLOAD_ALLOWED';exception when insufficient_privilege then null;end;
+end $$;
+reset role;
+select set_config('request.jwt.claim.sub','b0f68498-fc5a-4d03-9db0-93fbbd3ae5f1',true);
+set local role authenticated;
+update public.community_resources set status='hidden' where id=current_setting('test.community_published')::uuid;
+reset role;
+select set_config('request.jwt.claim.sub','',true);
+set local role anon;
+do $$ begin if exists(select 1 from public.community_resources where id=current_setting('test.community_published')::uuid) then raise exception 'HIDDEN_LEAK';end if;end $$;
+reset role;
+rollback;
+select 'PASS: admin create/edit, public published-only read, draft/hidden isolation, denied non-admin writes/uploads and self-promotion; all test rows rolled back' as verification;

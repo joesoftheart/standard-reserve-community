@@ -1,0 +1,2 @@
+const base=process.env.PUBLIC_SITE_URL;let u;try{u=new URL(base);if(u.protocol!=='https:'||u.hostname==='localhost')throw Error()}catch{console.error('Set PUBLIC_SITE_URL to the deployed HTTPS site.');process.exit(1)}
+try{const start=Date.now();const r=await fetch(new URL('/api/health',u),{signal:AbortSignal.timeout(10000)});const body=await r.json();if(!r.ok||body.status!=='ok')throw Error();console.log('App and database health OK ('+(Date.now()-start)+'ms)')}catch{console.error('App/database health check failed. Inspect deployment and Supabase.');process.exit(1)}

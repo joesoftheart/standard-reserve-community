@@ -1,1 +1,131 @@
-{"preview":"ILLUSTRATIVE MODEL","title":"A small world. A working system.","subtitle":"Follow the signal. Watch the Reserve respond.","conditions":"Choose capital flow","inflow":"Capital inflow","outflow":"Capital outflow","diagram":"Interactive diagram of market, monetary engine, Charter and vault relationships","artAlt":"Original miniature white limestone central bank towers with blue glass atrium","market":"The market","signal":"NET ETH FLOW","expansionLabel":"Positive signal","contractionLabel":"Zero or negative signal","engine":"Monetary engine","banker":"Banker · branch participation","branches":"Illustrative branches belonging to one Charter","expansionVault":"EXPANSION VAULT","contractionVault":"CONTRACTION VAULT","reserve":"Accumulating reserves","buyback":"Buyback & burn","licenseBurn":"License → STANDARD burned","slowerIssuance":"Issuance tightens","policySignal":"Policy signal","revenue":"Fee revenue","close":"Close explanation","whitepaper":"Read the rule","steps":"Explore the four stages","automatic":"PROTOCOL RESPONSE","bankerAction":"BANKER DECISION","pause":"Pause","play":"Play","next":"Next stage","disclaimer":"Condensed sequence · not live data","try":"Take the controls","expansion":[{"title":"Capital enters the market.","body":"ETH in from buys exceeds ETH out from sells. The market sends a positive net-flow signal."},{"title":"An epoch closes. Policy expands.","body":"Positive net flow sets expansion policy. Sustained inflow can increase issuance accrued proportionally by branches."},{"title":"A banker chooses to grow.","body":"Buying an Expansion License burns STANDARD and opens a branch. This is a banker’s decision, not an automatic purchase."},{"title":"Revenue builds the balance sheet.","body":"The active expansion vault accumulates reserves from its revenue allocation. Market inflow itself is not a direct vault deposit."}],"contraction":[{"title":"Capital leaves the market.","body":"ETH out from sells meets or exceeds ETH in from buys. Net flow is zero or negative."},{"title":"An epoch closes. Policy tightens.","body":"The engine enters contraction. Its policy response follows the epoch’s net-flow signal."},{"title":"Branch issuance is cut.","body":"The issuance rate tightens. Branches still represent proportional participation; contraction does not mean issuance must stop."},{"title":"The contraction vault responds.","body":"Its allocated revenue supports STANDARD buybacks and burns. This mechanism is not a guarantee of price or solvency."}],"details":{"market":{"title":"One market. One signal.","body":"Net ETH flow is ETH entering through buys minus ETH leaving through sells. Dashed blue lines show this signal, not a transfer of money.","anchor":"net-flow"},"bank":{"title":"Policy at the epoch boundary","body":"The monetary engine reads net flow to set policy. This short animation compresses the timeline and illustrates relationships, not exact execution timing.","anchor":"policy"},"charter":{"title":"A Charter holds branches","body":"A Banker holds a Charter. Branches accrue a proportional share of issuance. Accrual is not immediately minted into a wallet; withdrawal retires a branch and applies resolution rules.","anchor":"branches"},"vault":{"title":"Two roles for revenue","body":"Expansion routes its active-vault allocation to reserve accumulation; contraction supports buybacks and burns. Liquidity and team allocations are outside this simplified diagram.","anchor":"reserves"}}}
+{
+  "preview": "ILLUSTRATIVE MODEL",
+  "title": "A small world. A working system.",
+  "subtitle": "Follow the signal. Watch the Reserve respond.",
+  "conditions": "Choose capital flow",
+  "inflow": "Capital inflow",
+  "outflow": "Capital outflow",
+  "diagram": "Interactive diagram of market, monetary engine, Charter and vault relationships",
+  "artAlt": "Isometric white stone bank with curved rooftop accents, a blue glass atrium and a twin-tower memorial on the entrance stairs",
+  "market": "The market",
+  "signal": "NET ETH FLOW",
+  "expansionLabel": "Positive signal",
+  "contractionLabel": "Zero or negative signal",
+  "engine": "Monetary engine",
+  "banker": "Banker · branch participation",
+  "branches": "Illustrative branches belonging to one Charter",
+  "expansionVault": "EXPANSION VAULT",
+  "contractionVault": "CONTRACTION VAULT",
+  "reserve": "Accumulating reserves",
+  "buyback": "Buyback & burn",
+  "licenseBurn": "License → STANDARD burned",
+  "slowerIssuance": "Issuance tightens",
+  "policySignal": "Policy signal",
+  "revenue": "Fee revenue",
+  "close": "Close explanation",
+  "whitepaper": "Read the rule",
+  "steps": "Explore each stage",
+  "automatic": "PROTOCOL RESPONSE",
+  "bankerAction": "BANKER DECISION",
+  "pause": "Pause",
+  "play": "Play",
+  "next": "Next stage",
+  "disclaimer": "Condensed sequence · not live data",
+  "try": "Take the controls",
+  "expansion": [
+    {
+      "title": "Capital enters the market.",
+      "body": "ETH in from buys exceeds ETH out from sells. The market sends a positive net-flow signal."
+    },
+    {
+      "title": "An epoch closes. Policy expands.",
+      "body": "Positive net flow sets expansion policy. Sustained inflow can increase issuance accrued proportionally by branches."
+    },
+    {
+      "title": "A banker chooses to grow.",
+      "body": "Buying an Expansion License burns STANDARD and opens a branch. This is a banker’s decision, not an automatic purchase."
+    },
+    {
+      "title": "Revenue builds gold reserves and liquidity.",
+      "body": "ETH revenue routes 70% to the expansion vault for tokenized gold and comparable reserves, 15% to protocol liquidity and 15% to the team."
+    }
+  ],
+  "contraction": [
+    {
+      "title": "Capital leaves the market.",
+      "body": "ETH out from sells meets or exceeds ETH in from buys. Net flow is zero or negative."
+    },
+    {
+      "title": "An epoch closes. Policy tightens.",
+      "body": "The engine enters contraction. Its policy response follows the epoch’s net-flow signal."
+    },
+    {
+      "title": "Branch issuance is cut.",
+      "body": "The issuance rate tightens. Branches still represent proportional participation; contraction does not mean issuance must stop."
+    },
+    {
+      "title": "The contraction vault responds.",
+      "body": "Its allocated revenue supports STANDARD buybacks and burns. This mechanism is not a guarantee of price or solvency."
+    }
+  ],
+  "details": {
+    "market": {
+      "title": "One market. One signal.",
+      "body": "Net ETH flow is ETH entering through buys minus ETH leaving through sells. Dashed blue lines show this signal, not a transfer of money.",
+      "anchor": "net-flow"
+    },
+    "bank": {
+      "title": "Policy at the epoch boundary",
+      "body": "The monetary engine reads net flow to set policy. This short animation compresses the timeline and illustrates relationships, not exact execution timing.",
+      "anchor": "policy"
+    },
+    "charter": {
+      "title": "A Charter holds branches",
+      "body": "A Banker holds a Charter. Branches accrue a proportional share of issuance. Accrual is not immediately minted into a wallet; withdrawal retires a branch and applies resolution rules.",
+      "anchor": "branches"
+    },
+    "vault": {
+      "title": "Two roles for revenue",
+      "body": "ETH from trading fees and Charter auctions splits 70% to the active vault, 15% to protocol liquidity and 15% to the team. Expansion buys tokenized gold and comparable reserves; contraction buys back and burns STANDARD in limited steps. Reserves belong to the protocol; direct token redemption for gold is not specified.",
+      "anchor": "reserves"
+    },
+    "exit": {
+      "title": "Retirement and redistribution",
+      "body": "Retirement releases a proportional balance. Half the fee burns and half goes to remaining bankers. The fee rises with aggregate exit pressure and locks on commitment. The final branch retirement burns the Charter. Selling tokens on the market is a separate process.",
+      "anchor": "exits"
+    }
+  },
+  "exit": "Withdraw & share",
+  "wallet": "Withdrawing banker",
+  "net": "Net amount after fee",
+  "fee": "Resolution fee",
+  "burn": "Permanently burned",
+  "stayers": "Remaining bankers",
+  "closed": "Branch retired",
+  "ledger": "Accrued ledger balance",
+  "mint": "Mint on withdrawal",
+  "gold": "Tokenized gold",
+  "vaultShare": "Active vault",
+  "pol": "Protocol liquidity",
+  "team": "Team",
+  "feeSource": "ETH revenue: trading fees + Charter auctions",
+  "feeHalf": "Shares of the fee, not of the total withdrawal",
+  "withdrawal": [
+    {
+      "title": "A banker chooses to retire a branch.",
+      "body": "This example retires one of three branches to release one third of the accrued balance. The retired branch stops earning future issuance."
+    },
+    {
+      "title": "Calculate the share. Mint the net amount.",
+      "body": "The protocol deducts the resolution fee and mints net STANDARD to the wallet. The fee rate rises with system-wide withdrawal pressure over the trailing seven days."
+    },
+    {
+      "title": "Half of the resolution fee is burned.",
+      "body": "The protocol permanently burns 50% of the fee. This is half of the fee, not half of the total withdrawal."
+    },
+    {
+      "title": "The other half goes to remaining bankers.",
+      "body": "The other 50% is distributed to remaining banker positions, not all token holders. Retiring the final branch also burns the Charter."
+    }
+  ]
+}

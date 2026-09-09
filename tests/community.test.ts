@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {cleanResource,emptyResource,resourceText} from '../lib/community';
+const sample={...emptyResource,url:'https://example.com/work',kind:'tool' as const,title_th:'  ผลงาน  ',creator:' Creator ',x_username:'@creator',tags:[' Gold ','Gold']};
+test('community input normalizes handles, whitespace, tags and locale fallback',()=>{const r=cleanResource(sample);assert.equal(r.title_th,'ผลงาน');assert.equal(r.x_username,'creator');assert.deepEqual(r.tags,['Gold']);assert.equal(resourceText(r,'en').title,'ผลงาน')});
+test('community rejects unsafe links, fake X hosts, missing title and malformed handles',()=>{for(const url of ['javascript:alert(1)','http://example.com','https://user:password@example.com'])assert.throws(()=>cleanResource({...sample,url}));assert.throws(()=>cleanResource({...sample,kind:'post',url:'https://x.com.evil.example/post'}));assert.throws(()=>cleanResource({...sample,title_th:'',title_en:''}));assert.throws(()=>cleanResource({...sample,x_username:'not a handle'}));assert.throws(()=>cleanResource({...sample,tags:Array.from({length:9},(_,i)=>String(i))}));});

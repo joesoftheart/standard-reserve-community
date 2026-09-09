@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {analyticsPath} from '../lib/telemetry';
+test('analytics strips trailing slash and rejects personal/admin/query paths',()=>{assert.equal(analyticsPath('/th/learn/'),'/th/learn');assert.equal(analyticsPath('/en'),'/en');for(const p of ['/en/community/manage','/en/stats','/en/learn?token=secret','/auth/callback','/foo'])assert.equal(analyticsPath(p),null)});

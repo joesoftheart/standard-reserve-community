@@ -1,0 +1,11 @@
+# Community resources
+
+- Public page: `/th/community` (also `/en/community`). Search title, description, creator, X handle and tags; filter post/article/tool; newest/oldest ordering; up to three newest featured resources and all published resources.
+- Admin: `/th/community/manage`. X account `@joesofth3art` is mapped to its verified existing auth UUID in `community_admins`; permission is not based on a client-side name match. Other users cannot grant themselves access.
+- Add a HTTPS source link, type, at least one localized title, creator and optional X handle/tags/cover. Preview switches Thai/English. Missing translations fall back to the provided language. Source links open a new tab; the site does not post to X or scrape remote content.
+- Save draft, publish, edit and hide are supported. No sample resources were seeded. Existing `community_members` records were retained.
+- Covers: Supabase Storage `community-covers`, public bucket, admin uploads only, JPG/PNG/WebP, maximum 5 MB. Images are user-supplied; missing covers show a type icon. Public cover URLs remain accessible if a resource is subsequently hidden; hiding removes the listing, not previously shared media URLs.
+- Database: migration `supabase/migrations/20260909_community_resources.sql` applied. RLS limits public reads to published resources and writes to admins. Immutable creator/created timestamp, auto updated timestamp, unique source URL and field constraints.
+- Validation: production build passes; 13 Node tests pass; `supabase/community-regression.sql` passes against the real database with authenticated/admin/anon roles. Covers create/edit, draft and hidden isolation, unauthorized updates/inserts/uploads, and blocked self-promotion. Tests rolled back. Anonymous REST API smoke passed.
+- Browser layout, actual file-upload transport and interaction QA remain unverified due prior automatic approval browser restrictions. No alternate localhost inspection surface was used.
+- Featured shows the newest three marked items; the rest still appear in All resources. Large public galleries will eventually need pagination beyond the database's default row limit. Existing public images are not automatically deleted when replaced to avoid breaking reused links.
