@@ -41,3 +41,6 @@ Test a successful X sign-in, cancelled consent, reload persistence, sign-out, th
 Add the public HTTPS app origin and its exact /auth/callback URL to Supabase before using the deployed app. Set the production environment variables and rebuild. Publication is currently deferred.
 
 Reference: https://supabase.com/docs/guides/auth/social-login/auth-twitter
+
+## Production configured September 9, 2026
+User authorized publication. Site URL: https://standardreserve.community. Allowed redirect: https://standardreserve.community/auth/callback (localhost callback retained). X provider callback stays https://hytaybguddhagfqxykwg.supabase.co/auth/v1/callback. Production public environment variables configured in Vercel.

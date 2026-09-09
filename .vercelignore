@@ -1,0 +1,6 @@
+.backups
+.env*
+.git
+supabase
+*.dump
+*.bundle

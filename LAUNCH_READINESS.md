@@ -1,6 +1,6 @@
 # Launch preparation — 2026-09-09
 
-Chosen candidate: **thestandard.community**. Not purchased, not deployed, availability not confirmed. Do not configure the share URL until DNS/HTTPS and hosting are live. Then set NEXT_PUBLIC_SITE_URL=https://thestandard.community and configure Supabase redirect allowlist / X application website values.
+Published domain: **https://standardreserve.community** (user purchased; explicit production authorization received September 9, 2026). Vercel production deployment is READY, DNS resolves, HTTPS page opens. Production NEXT_PUBLIC_SITE_URL and Supabase Site URL use this origin; the exact /auth/callback URL is allowlisted alongside localhost. X continues to use the same Supabase provider callback.
 
 ## User decisions
 - End-to-end launch flow testing deferred by the user, not marked passed.
@@ -27,3 +27,6 @@ Build and unit tests tracked separately. Local browser UI QA remains blocked by 
 
 ## Applied status
 Analytics migration applied with explicit user approval; SQL regression passed for admin isolation, private raw data, duplicate suppression, allowlists and scheduled retention. Test data rolled back. Source snapshot 6607440 was pushed to private origin and a local complete-history bundle verified. DM recipient 220232477 was read from the developer's saved X identity. Full DB export/restore, domain purchase, deployment, external monitoring activation and load testing remain pending.
+
+## Production deployment
+Published using linked Vercel project standard-reserve-community under joesofthearts-projects. Production deployment dpl_88i1DUfg8ofXs2q8BF8QNAijydtx. The live Thai homepage was opened in the browser; full login/game E2E remains deferred per user. GitHub PUBLIC_SITE_URL set to the public domain and health workflow dispatched for verification. Full DB backup/restore rehearsal and gameplay load test remain pending.
