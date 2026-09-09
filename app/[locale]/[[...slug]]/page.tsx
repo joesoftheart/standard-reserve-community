@@ -1,0 +1,6 @@
+import Hub from '@/components/hub';
+import {notFound} from 'next/navigation';
+import type {Metadata} from 'next';
+type Props={params:Promise<{locale:string;slug?:string[]}>;searchParams:Promise<Record<string,string|string[]|undefined>>};
+export async function generateMetadata({params,searchParams}:Props):Promise<Metadata>{const {slug=[]}=await params;const q=await searchParams;const title=slug[0]==='result'&&typeof q.title==='string'?q.title.slice(0,100):'Standard Reserve — Community Hub';const value=typeof q.value==='string'?q.value.slice(0,180):'';const image='/api/og?'+new URLSearchParams({title,value});return {title,openGraph:{title,images:[image]},twitter:{card:'summary_large_image',title,images:[image]}}}
+export default async function Page({params}:Props){const {locale,slug=[]}=await params;if(!['en','th'].includes(locale)||slug.length>2||!['','learn','simulate','challenges','community','founder','rankings','quiz','result'].includes(slug[0]||'')||(slug.length===2&&!['community','challenges'].includes(slug[0]))||(slug[0]==='challenges'&&slug[1]&&!/^[0-5]$/.test(slug[1])))notFound();return <Hub locale={locale as 'en'|'th'} page={slug[0]||'home'} detail={slug[1]}/>}
