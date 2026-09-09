@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {safeReturnPath,displayIdentity} from '../lib/auth';
+test('OAuth returns only to allowed local locale paths',()=>{assert.equal(safeReturnPath('/th/challenges/5'),'/th/challenges/5');for(const v of ['//evil.example','https://evil.example','/th/\\evil.example','/th/%2f%2fevil.example','/auth/callback',null])assert.equal(safeReturnPath(v),'/en')});
+test('X identity supports both provider metadata formats',()=>{assert.equal(displayIdentity({user_metadata:{preferred_username:'alice'}}),'alice');assert.equal(displayIdentity({user_metadata:{user_name:'bob'}}),'bob');assert.equal(displayIdentity(null),'')});

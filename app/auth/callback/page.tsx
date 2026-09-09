@@ -1,0 +1,6 @@
+'use client';
+import {useEffect,useState} from 'react';import Link from 'next/link';
+import {getSupabase} from '@/lib/supabase';import {safeReturnPath} from '@/lib/auth';
+export default function Callback(){const [status,setStatus]=useState('Connecting to X / กำลังเชื่อมต่อ X…');const [back,setBack]=useState('/en');const [failed,setFailed]=useState(false);
+useEffect(()=>{let active=true;async function finish(){const p=new URLSearchParams(location.search),next=safeReturnPath(sessionStorage.getItem('reserve-auth-return')),thai=next.startsWith('/th');setBack(next);const fail=()=>{if(active){setFailed(true);setStatus(thai?'เข้าสู่ระบบไม่สำเร็จหรือถูกยกเลิก กลับไปลองอีกครั้งได้':'Sign-in failed or was cancelled. Return to the app to try again.')}};if(p.has('error')){fail();return}const db=getSupabase();if(!db){fail();return}try{const {data,error}=await db.auth.getSession();if(error||!data.session){fail();return}if(active){sessionStorage.removeItem('reserve-auth-return');location.replace(next)}}catch{fail()}}finish();return()=>{active=false}},[]);
+return <main><div className="resultBox"><h1>STANDARD RESERVE</h1><p role="status">{status}</p>{failed&&<Link className="button primary" href={back}>Return / กลับสู่เว็บไซต์</Link>}</div></main>}
