@@ -12,7 +12,14 @@
 
 ## Not live yet
 
-- Supabase project/database and X provider credentials are not configured; remote persistence and authenticated leaderboard were not integration-tested.
+- Supabase project and database are configured. Public reads of community_members and leaderboard passed. X provider credentials remain unconfigured; authenticated saving and sign-in are not yet integration-tested.
 - Contributor profiles and founder biography require verified owner-supplied content.
 - Vercel publication deferred at the user's request. Local server runs at http://localhost:3000.
 - Share links use the current origin. Localhost links are only suitable for local testing until a public deployment exists.
+
+## Authentication setup progress
+
+- Applied supabase/schema.sql in one transaction successfully.
+- Registered http://localhost:3000/auth/callback as the allowed redirect.
+- Stored Supabase URL and public publishable key in ignored .env.local.
+- X OAuth 2.0 provider awaits the owner’s developer app Client ID and Client Secret.
