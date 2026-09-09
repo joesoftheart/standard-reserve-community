@@ -24,3 +24,6 @@ Run scripts/load-smoke.mjs --staging-confirmed against a staging HTTPS URL befor
 
 ## Verification
 Build and unit tests tracked separately. Local browser UI QA remains blocked by prior automatic approval; the user's decision to skip E2E does not imply a pass.
+
+## Applied status
+Analytics migration applied with explicit user approval; SQL regression passed for admin isolation, private raw data, duplicate suppression, allowlists and scheduled retention. Test data rolled back. Source snapshot 6607440 was pushed to private origin and a local complete-history bundle verified. DM recipient 220232477 was read from the developer's saved X identity. Full DB export/restore, domain purchase, deployment, external monitoring activation and load testing remain pending.

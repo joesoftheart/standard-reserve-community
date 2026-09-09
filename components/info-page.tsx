@@ -1,7 +1,7 @@
  'use client';
 import Link from 'next/link';
 import {useEffect,useState} from 'react';
-import {officialSite,officialX,developerX,whitepaper} from '@/lib/site-info';
+import {officialSite,officialX,developerX,developerDM,whitepaper} from '@/lib/site-info';
 import {analyticsAllowed,analyticsPreference} from '@/lib/telemetry';
 import './info-page.css';
 export default function InfoPage({locale,privacy=false}:{locale:'th'|'en';privacy?:boolean}){const th=locale==='th';const [enabled,setEnabled]=useState(false);useEffect(()=>setEnabled(analyticsAllowed()),[]);
@@ -17,9 +17,9 @@ export default function InfoPage({locale,privacy=false}:{locale:'th'|'en';privac
  </>:<>
  <h2>{th?'พื้นที่เรียนรู้ของชุมชน':'A place to learn together'}</h2><p>{th?'สำรวจกลไกผ่านเรื่องจำลอง เล่นคำถาม และรวบรวมผลงานชุมชน เนื้อหาอ้างอิง Whitepaper พร้อมแยกตัวอย่างสมมติออกจากข้อกำหนดจริง เว็บไซต์นี้ไม่ได้ให้บริการฝากเงิน ซื้อเหรียญ หรือรับประกันผลตอบแทน':'Explore the mechanics through simulations, questions and community creations. Content references the whitepaper and distinguishes illustrative scenarios from protocol rules. This website does not accept deposits, sell tokens or guarantee returns.'}</p>
  <h2>{th?'ผู้พัฒนาและข้อเสนอแนะ':'Developer & feedback'}</h2><p>{th?'พัฒนาและดูแลโดย @joesofth3art ยินดีรับไอเดีย แจ้งข้อผิดพลาด และข้อเสนอแก้เนื้อหาผ่าน DM บน X':'Built and maintained by @joesofth3art. Ideas, bug reports and content corrections are welcome through X DMs.'}</p>
- <p>{th?'เปิดโปรไฟล์แล้วกดปุ่มข้อความบน X หากส่ง DM ไม่ได้ ให้ใช้ช่องทางที่เจ้าของบัญชีเปิดรับบนโปรไฟล์':'Open the profile and choose Message on X. If DMs are unavailable, use the contact options offered on the profile.'}</p>
- <h2>{th?'แหล่งข้อมูลทางการ':'Official sources'}</h2><div className="infoLinks"><a href={officialSite} target="_blank" rel="noreferrer">The Standard Reserve ↗</a><a href={officialX} target="_blank" rel="noreferrer">X · @standard_rsv ↗</a><a href={whitepaper} target="_blank" rel="noreferrer">Whitepaper ↗</a></div>
+ <p>{th?'กดปุ่มด้านล่างเพื่อเปิด DM บน X หากส่งไม่ได้ ให้ตรวจช่องทางติดต่อบนโปรไฟล์ผู้พัฒนา':'Use the button below to open a DM on X. If messaging is unavailable, check the developer profile for contact options.'}</p>
+ <a href={developerX} target="_blank" rel="noreferrer">@joesofth3art ↗</a><h2>{th?'แหล่งข้อมูลทางการ':'Official sources'}</h2><div className="infoLinks"><a href={officialSite} target="_blank" rel="noreferrer">The Standard Reserve ↗</a><a href={officialX} target="_blank" rel="noreferrer">X · @standard_rsv ↗</a><a href={whitepaper} target="_blank" rel="noreferrer">Whitepaper ↗</a></div>
  </>}
- <div className="buttons"><a className="button primary" href={developerX} target="_blank" rel="noreferrer">{th?'ติดต่อ / ส่งข้อเสนอแนะทาง X':'Contact / feedback on X'} ↗</a><Link className="button" href={`/${locale}/${privacy?'about':'privacy'}`}>{privacy?(th?'เกี่ยวกับผู้พัฒนา':'About the developer'):(th?'ข้อมูลและความเป็นส่วนตัว':'Data & privacy')}</Link></div><small>{th?'อัปเดต 9 กันยายน 2026':'Updated September 9, 2026'}</small>
+ <div className="buttons"><a className="button primary" href={developerDM} target="_blank" rel="noreferrer">{th?'ส่งข้อเสนอแนะทาง DM':'Send feedback via DM'} ↗</a><Link className="button" href={`/${locale}/${privacy?'about':'privacy'}`}>{privacy?(th?'เกี่ยวกับผู้พัฒนา':'About the developer'):(th?'ข้อมูลและความเป็นส่วนตัว':'Data & privacy')}</Link></div><small>{th?'อัปเดต 9 กันยายน 2026':'Updated September 9, 2026'}</small>
  </article>
 }
